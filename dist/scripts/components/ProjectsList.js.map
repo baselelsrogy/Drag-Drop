@@ -1,0 +1,1 @@
+{"version":3,"file":"ProjectsList.js","sourceRoot":"","sources":["../../../src/scripts/components/ProjectsList.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW;IACP,SAAS,CAAsB;IAC/B,KAAK,CAAkB;IACvB,YAAY,CAAiB;IAErC;QACE,IAAI,CAAC,SAAS,GAAG,QAAQ,CAAC,cAAc,EAAE,CAAC;IAC7C,CAAC;CACF"}
