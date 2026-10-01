@@ -1,20 +1,14 @@
-export class ProjectList {
+import { Base } from './Base.js';
+export class ProjectList extends Base {
     _status;
-    _template;
-    _projects;
-    _hostElement;
     constructor(_status) {
+        super('project-list', 'app', `${_status}-projects`, 'beforeend');
         this._status = _status;
-        this._template = document.getElementById('project-list');
-        this._hostElement = document.getElementById('app');
-        const contentProjects = document.importNode(this._template.content, true);
-        this._projects = contentProjects.firstElementChild;
         this.renderProjectList();
-        this._hostElement.insertAdjacentElement('beforeend', this._projects);
     }
     renderProjectList() {
-        const title = this._projects.querySelector('.title');
-        const list = this._projects.querySelector('.projects-list');
+        const title = this._element.querySelector('.title');
+        const list = this._element.querySelector('.projects-list');
         list.classList.add(`${this._status}-list`);
         title.textContent = `${this._status} Projects`;
     }
