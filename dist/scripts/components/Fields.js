@@ -30,11 +30,17 @@ export class Fields extends Base {
         const [titleInputRule, descInputRule] = assignValidationInputs(titleInput, descInput);
         const titleErrorMsg = handleValidationError(titleInputRule);
         const descErrorMsg = handleValidationError(descInputRule);
+        const popup = document.querySelector('.popup_container');
+        const descPopup = document.querySelector('.desc_popup');
         if (titleErrorMsg.length) {
-            alert(titleErrorMsg);
+            popup.classList.add('visible_popup');
+            descPopup.textContent = titleErrorMsg;
+            return false;
         }
         else if (descErrorMsg.length) {
-            alert(descErrorMsg);
+            popup.classList.add('visible_popup');
+            descPopup.textContent = descErrorMsg;
+            return false;
         }
         return true;
     }
