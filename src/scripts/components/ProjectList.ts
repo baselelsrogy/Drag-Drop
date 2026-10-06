@@ -1,9 +1,12 @@
+import type { ProjectRules } from '../store/projectRules.js';
+import { projectState } from '../store/projectState.js';
 import { Base } from './Base.js';
 
 export class ProjectList extends Base<HTMLDivElement> {
   constructor(private _status: 'Initial' | 'Active' | 'Finished') {
     super('project-list', 'app', `${_status}-projects`, 'beforeend');
     this.renderProjectList();
+    projectState.pushListener((projects: ProjectRules[]) => {});
   }
 
   private renderProjectList(): void {

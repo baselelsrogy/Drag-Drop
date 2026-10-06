@@ -4,7 +4,10 @@ import { ProjectRules } from './projectRules.js';
 class ProjectState {
   private static _instance: ProjectState;
   private _projects: ProjectRules[] = [];
-  constructor() {}
+  private _listeners: Function[] = [];
+  constructor() {
+    console.log(this._listeners);
+  }
 
   public static getInstance(): ProjectState {
     if (!this._instance) {
@@ -24,6 +27,17 @@ class ProjectState {
     );
 
     this._projects.push(newProject);
+    this._runListeners();
+  }
+
+  private _runListeners(): void {
+    for (const listener of this._listeners) {
+      listener([...this._projects]);
+    }
+  }
+
+  public pushListener(listener: Function): void {
+    this._listeners.push(listener);
   }
 }
 
