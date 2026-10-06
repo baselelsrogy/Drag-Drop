@@ -1,3 +1,4 @@
+import { projectState } from '../store/projectState.js';
 import { assignValidationInputs, handleValidationError, } from '../utils/validation/validation_helpers.js';
 import { Base } from './Base.js';
 export class Fields extends Base {
@@ -13,7 +14,7 @@ export class Fields extends Base {
         const [titleInput, descInput] = this._targetInputs();
         const [titleValue, descValue] = this._getInputsValue(titleInput, descInput);
         if (this._validateInputsValue(titleValue, descValue)) {
-            console.log('Valid');
+            projectState.createProject(titleValue, descValue);
         }
     }
     _targetInputs() {
